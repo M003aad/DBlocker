@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software in your work, please cite it using the metadata below."
+title: "DBlocker"
+authors:
+  - family-names: "M003aad"
+    given-names: ""
+version: 1.0.0
+date-released: 2026-10-23
+url: "https://github.com/M003aad/DBlocker.git"
+repository-code: "https://github.com/M003aad/DBlocker.git"
+license: "AGPL-3.0-only"

@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate manifest
+        run: |
+          node -e "const fs=require('fs'); const f='manifest.json'; const m=JSON.parse(fs.readFileSync(f,'utf8')); if (!m.name || !m.version || m.manifest_version !== 3) { throw new Error('Manifest validation failed'); } console.log('Manifest OK:', m.name, m.version);"
+
+      - name: Validate JavaScript syntax
+        run: |
+          node --check background.js
+          node --check popup.js
+
+      - name: Verify required files exist
+        run: |
+          test -f manifest.json
+          test -f popup.html
+          test -f popup.css
+          test -f background.js
+          test -f rules.json
+          test -f LICENSE

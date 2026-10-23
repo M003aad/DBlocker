@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "DBlocker",
+  "version": "1.0.0",
+  "description": "Block unwanted domains and close tabs instantly",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon32.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon32.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "webNavigation",
+    "declarativeNetRequest"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
